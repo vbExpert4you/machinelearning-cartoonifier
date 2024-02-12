@@ -31,7 +31,7 @@ def cartoonify(ImagePath):
         print("Cannot find any image. Please choose an appropriate file")
         sys.exit()
 
-    ReSized1 = cv2.resize(originalImage, (960, 540))
+    Resized1 = cv2.resize(originalImage, (960, 540))
 
     grayScaleImage = cv2.cvtColor (originalImage, cv2.COLOR_BGR2GRAY)
     Resized2 = cv2.resize(grayScaleImage, (960, 540))
@@ -48,12 +48,16 @@ def cartoonify(ImagePath):
     cartoonImage = cv2.bitwise_and(colorImage, colorImage, mask = getEdge)
     Resized6 = cv2.resize(cartoonImage, (960, 540))
 
-    images = [ReSized1, Resized2, Resized3, Resized4, Resized5, Resized6]
+    images = [Resized1, Resized2, Resized3, Resized4, Resized5, Resized6]
     fig, axes = plt.subplots(3, 2, figsize = (8,8), subplot_kw = {'xticks':[], 'yticks': []}, gridspec_kw = dict(hspace = 0.1, wspace = 0.1))
 
     for i, ax in enumerate(axes.flat):
         ax.imshow(images[i], cmap = 'gray')
 
+    save1 = Button (top, text = 'Save Cartoon Image', command = lambda: save(Resized6, ImagePath), padx = 30, pady = 5)
+    save1.configure(background = '#364156', foreground = 'white', font = ('calibri', 10, 'bold'))
+    save1.pack(side = TOP, pady = 50)
+    
     plt.show()
 
 def save(Resized6, ImagePath):
