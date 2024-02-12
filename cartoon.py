@@ -1,5 +1,5 @@
-import cv2      # for image processing
-import easygui  # to open the file box
+import cv2          # for image processing
+import easygui      # to open the file box
 import numpy as np  #   to store image
 import imageio      # to read the image stored at a particular path
 import sys
@@ -57,7 +57,7 @@ def cartoonify(ImagePath):
     save1 = Button (top, text = 'Save Cartoon Image', command = lambda: save(Resized6, ImagePath), padx = 30, pady = 5)
     save1.configure(background = '#364156', foreground = 'white', font = ('calibri', 10, 'bold'))
     save1.pack(side = TOP, pady = 50)
-    
+
     plt.show()
 
 def save(Resized6, ImagePath):
